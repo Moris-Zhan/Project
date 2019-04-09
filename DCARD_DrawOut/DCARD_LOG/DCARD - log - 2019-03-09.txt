@@ -1,0 +1,19 @@
+2019-03-09 23:09:52 - DCARD - INFO: - logger已啟動
+2019-03-09 23:09:52 - DCARD - INFO: - 檢查登入文件:True
+2019-03-09 23:09:52 - DCARD - INFO: - E:\WorkSpace\PythonWorkSpace\DCARD_DrawOut\DCARD_INFO.txt
+2019-03-09 23:09:52 - DCARD - INFO: - logger已關閉
+2019-03-09 23:13:06 - DCARD - INFO: - logger已啟動
+2019-03-09 23:13:06 - DCARD - INFO: - 檢查登入文件:True
+2019-03-09 23:13:06 - DCARD - INFO: - E:\WorkSpace\PythonWorkSpace\DCARD_DrawOut\DCARD_INFO.txt
+2019-03-09 23:13:19 - DCARD - INFO: - 前往抽卡頁面
+2019-03-09 23:13:43 - DCARD - ERROR: - (<class 'selenium.common.exceptions.TimeoutException'>, TimeoutException('', None, None), <traceback object at 0x0000021BF2AF4588>)
+2019-03-09 23:13:43 - DCARD - ERROR: - 171
+2019-03-09 23:13:43 - DCARD - ERROR: - Message: 
+
+2019-03-09 23:13:56 - DCARD - INFO: - 前往抽卡頁面
+2019-03-09 23:13:56 - DCARD - INFO: - https://photos.dcard.tw/memberPhotos/ea424806-8287-456a-89de-7b88ccb038b9
+2019-03-09 23:13:56 - DCARD - INFO: - 國立東華大學	-	材料科學與工程學系 女同學
+2019-03-09 23:13:59 - DCARD - INFO: - DCARD Image/2019-03-09/
+2019-03-09 23:13:59 - DCARD - INFO: - create folder
+2019-03-09 23:13:59 - DCARD - ERROR: - 9999
+2019-03-09 23:13:59 - DCARD - INFO: - 已重複抽卡

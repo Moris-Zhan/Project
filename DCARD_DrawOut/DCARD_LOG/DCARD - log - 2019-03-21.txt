@@ -1,0 +1,77 @@
+2019-03-21 02:22:58 - DCARD - INFO: - logger已啟動
+2019-03-21 02:22:58 - DCARD - INFO: - 檢查登入文件:True
+2019-03-21 02:22:58 - DCARD - INFO: - E:\WorkSpace\PythonWorkSpace\DCARD_DrawOut\DCARD_INFO.txt
+2019-03-21 02:23:19 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x000002676D162588>)
+2019-03-21 02:23:19 - DCARD - ERROR: - 142
+2019-03-21 02:23:19 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
+2019-03-21 02:23:39 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x000002676D167A88>)
+2019-03-21 02:23:39 - DCARD - ERROR: - 142
+2019-03-21 02:23:39 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
+2019-03-21 02:23:58 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x000002676D169D08>)
+2019-03-21 02:23:58 - DCARD - ERROR: - 142
+2019-03-21 02:23:58 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
+2019-03-21 02:24:15 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x000002676D162D88>)
+2019-03-21 02:24:15 - DCARD - ERROR: - 142
+2019-03-21 02:24:15 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
+2019-03-21 02:24:34 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x000002676D1719C8>)
+2019-03-21 02:24:34 - DCARD - ERROR: - 142
+2019-03-21 02:24:34 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
+2019-03-21 02:25:04 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x000002676D189EC8>)
+2019-03-21 02:25:04 - DCARD - ERROR: - 142
+2019-03-21 02:25:04 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
+2019-03-21 02:25:24 - DCARD - INFO: - logger已啟動
+2019-03-21 02:25:24 - DCARD - INFO: - 檢查登入文件:True
+2019-03-21 02:25:24 - DCARD - INFO: - E:\WorkSpace\PythonWorkSpace\DCARD_DrawOut\DCARD_INFO.txt
+2019-03-21 02:25:42 - DCARD - INFO: - 前往抽卡頁面
+2019-03-21 02:25:43 - DCARD - INFO: - https://photos.dcard.tw/memberPhotos/79fde833-10b8-49df-8578-7d8edc1b48ac
+2019-03-21 02:25:43 - DCARD - INFO: - 環球科技大學	-	觀光與餐飲旅館系 女同學
+2019-03-21 02:25:45 - DCARD - INFO: - DCARD Image/2019-03-21/
+2019-03-21 02:25:45 - DCARD - INFO: - create folder
+2019-03-21 02:25:46 - DCARD - INFO: - 已送出邀請
+2019-03-21 02:25:47 - DCARD - INFO: - 無新卡友
+2019-03-21 02:25:47 - DCARD - INFO: - 切至收件閘
+2019-03-21 02:25:52 - DCARD - INFO: - 發送email
+2019-03-21 02:26:01 - DCARD - INFO: - Send mails to afly.bsky@yahoo.com.tw
+2019-03-21 02:26:01 - DCARD - INFO: - 寄信成功
+2019-03-21 02:26:15 - DCARD - INFO: - 前往抽卡頁面
+2019-03-21 02:26:16 - DCARD - INFO: - https://photos.dcard.tw/memberPhotos/678cdec9-7287-481b-91d2-29b1fae27545
+2019-03-21 02:26:16 - DCARD - INFO: - 中國文化大學	-	法律學系 女同學
+2019-03-21 02:26:18 - DCARD - INFO: - DCARD Image/2019-03-21/
+2019-03-21 02:26:18 - DCARD - INFO: - 已送出邀請
+2019-03-21 02:26:20 - DCARD - INFO: - 3月20日恭喜獲得新卡友
+2019-03-21 02:26:20 - DCARD - INFO: - 命運之神發現你與 郭珈妏 想認識彼此，快把握緣分寫封信給對方吧 :)
+2019-03-21 02:26:20 - DCARD - INFO: - 前往新好友頁面
+2019-03-21 02:26:22 - DCARD - INFO: - 點擊好友關於
+2019-03-21 02:26:25 - DCARD - INFO: - https://photos.dcard.tw/memberPhotos/0bb8037e-f317-4dc3-90e1-b513d48f410e
+2019-03-21 02:26:28 - DCARD - INFO: - 發送email
+2019-03-21 02:26:36 - DCARD - INFO: - Send mails to afly.bsky@yahoo.com.tw
+2019-03-21 02:26:36 - DCARD - INFO: - 寄信成功
+2019-03-21 02:26:51 - DCARD - INFO: - 前往抽卡頁面
+2019-03-21 02:26:52 - DCARD - INFO: - https://photos.dcard.tw/memberPhotos/364da154-6f45-4f22-a4e9-061572db9c41
+2019-03-21 02:26:52 - DCARD - INFO: - 國立高雄應用科技大學	-	企業管理系 女同學
+2019-03-21 02:26:54 - DCARD - INFO: - DCARD Image/2019-03-21/
+2019-03-21 02:26:54 - DCARD - INFO: - 已送出邀請
+2019-03-21 02:26:55 - DCARD - INFO: - 無新卡友
+2019-03-21 02:26:55 - DCARD - INFO: - 切至收件閘
+2019-03-21 02:27:00 - DCARD - INFO: - 發送email
+2019-03-21 02:27:07 - DCARD - INFO: - Send mails to afly.bsky@yahoo.com.tw
+2019-03-21 02:27:07 - DCARD - INFO: - 寄信成功
+2019-03-21 02:27:07 - DCARD - INFO: - logger已關閉

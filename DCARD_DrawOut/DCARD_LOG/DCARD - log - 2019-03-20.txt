@@ -1,0 +1,21 @@
+2019-03-20 00:14:17 - DCARD - INFO: - logger已啟動
+2019-03-20 00:14:17 - DCARD - INFO: - 檢查登入文件:True
+2019-03-20 00:14:17 - DCARD - INFO: - E:\WorkSpace\PythonWorkSpace\DCARD_DrawOut\DCARD_INFO.txt
+2019-03-20 00:14:38 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x0000021BE6592588>)
+2019-03-20 00:14:38 - DCARD - ERROR: - 142
+2019-03-20 00:14:38 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
+2019-03-20 00:14:56 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x0000021BE6597A48>)
+2019-03-20 00:14:56 - DCARD - ERROR: - 142
+2019-03-20 00:14:56 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
+2019-03-20 00:15:13 - DCARD - ERROR: - (<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException('no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}\n  (Session info: chrome=72.0.3626.121)\n  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)', None, None), <traceback object at 0x0000021BE659ACC8>)
+2019-03-20 00:15:13 - DCARD - ERROR: - 142
+2019-03-20 00:15:13 - DCARD - ERROR: - Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/header/div/nav/a[2]/span/span"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+
