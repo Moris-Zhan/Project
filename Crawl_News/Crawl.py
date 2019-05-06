@@ -7,6 +7,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
+from selenium.webdriver.chrome.options import Options
+WINDOW_SIZE = "1920,1080"
+CHROMEDRIVER_PATH = ".\chromedriver.exe"
+chrome_options = Options()  
+chrome_options.add_argument("--headless")  
+chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
+
 from bs4 import BeautifulSoup
 import requests as req
 from MongoDB import MongoDB
@@ -24,7 +31,7 @@ import re
 FlagTimeBreak = False
 
 global logger  
-LogObj = Log('Economy')
+LogObj = Log('NEWS')
 logger = LogObj.logger
 
 class Crawler:   
@@ -35,21 +42,28 @@ class Crawler:
         self.mongo.conn_db(db_name='News')  
         
         self.urlSource={
-            # # 匯率新聞 
-            # 'Currency':{'USD/JPY':'https://www.investing.com/currencies/usd-jpy-news/',
-            #             'EUR/JPY':'https://www.investing.com/currencies/eur-jpy-news/'
-            #            },
-            # # 貿易商品
-            # 'Commodities':{'CurrencyPair':'https://www.investing.com/news/commodities-news/'},
+            # 匯率新聞 
+            'Currency':{'USD/JPY':'https://www.investing.com/currencies/usd-jpy-news/',
+                        'EUR/JPY':'https://www.investing.com/currencies/eur-jpy-news/'
+                       },
+            # 貿易商品
+            'Commodities':{'CurrencyPair':'https://www.investing.com/news/commodities-news/'},
             # 商業政策
-            'Economy':{'CurrencyPair':'https://www.investing.com/news/economic-indicators/'}
+            'Economy':{'CurrencyPair':'https://www.investing.com/news/economic-indicators'}
         }
 
     def decDate(self,dateTime):
-        if type(dateTime) == list:
-            if len(dateTime)>0:
-                dateTime = dateTime[-1]
-        dateTime = parser.parse(dateTime)
+        try:
+            if '(' in dateTime:
+                dateTime = dateTime.split('(')[1]
+                dateTime = dateTime.split(')')[0]
+
+            if type(dateTime) == list:
+                if len(dateTime)>0:
+                    dateTime = dateTime[0]
+            dateTime = parser.parse(dateTime)
+        except Exception as e:
+            print("日期解析錯誤 : {}".format(dateTime))
         return dateTime
     
     ##替換常用HTML字元實體.
@@ -102,7 +116,10 @@ class Crawler:
 
     def crawNews(self,tag,currencyPair,currencyPairUrl):        
 
-        driver = webdriver.Chrome(".\chromedriver.exe")
+        # driver = webdriver.Chrome("D:\\Program\\Anaconda3\\chromedriver.exe")
+        driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
+                          chrome_options=chrome_options
+                         ) 
         i = 1
         while(True):
             try:                
@@ -229,10 +246,7 @@ class Crawler:
                                 contentSectionDetails = driver.find_element_by_class_name('contentSectionDetails')
                                 dateTime = contentSectionDetails.find_element_by_tag_name('span').text # 'Aug 13, 2018 04:02AM ET'
                                 content = driver.find_element_by_class_name('articlePage').get_attribute('innerHTML')
-                                if '(' in dateTime:
-                                    dateTime = dateTime.split('(')[1]
-                                    dateTime = dateTime.split(')')[0]
-                                dateTime = str(parser.parse(dateTime)) 
+                                 
                             except Exception as e:
                                 traceback = sys.exc_info()[2]
                                 # print(traceback.tb_lineno)
@@ -244,13 +258,9 @@ class Crawler:
                                 result = req.get(newsUrl, headers=headers)
                                 # soup = BeautifulSoup(result.text, "html.parser")                                          
                                 contentSectionDetails = driver.find_element_by_class_name('contentSectionDetails')
-                                date = contentSectionDetails.find_element_by_tag_name('span').text # 'Aug 13, 2018 04:02AM ET'
-                                content = driver.find_element_by_class_name('articlePage').get_attribute('innerHTML')
-                                
-                                if '(' in dateTime:
-                                    dateTime = dateTime.split('(')[1]
-                                    dateTime = dateTime.split(')')[0]
-                                    dateTime = str(parser.parse(dateTime)) 
+                                dateTime = contentSectionDetails.find_element_by_tag_name('span').text # 'Aug 13, 2018 04:02AM ET'
+                                content = driver.find_element_by_class_name('articlePage').get_attribute('innerHTML')                                
+                                 
                             except Exception as e:
                                 traceback = sys.exc_info()[2]
                                 # print(traceback.tb_lineno)
