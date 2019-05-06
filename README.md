@@ -1,105 +1,53 @@
-# AAD_1072_HW07
+# Python
+## DCARD DrawOut
 
-Please follow the instructions on the **Homework** sections in these codelabs.
+[Dcard 自動抽卡程式](https://github.com/Leyan529/Project/tree/master/DCARD_DrawOut)
 
-- [07.1: AsyncTask](https://codelabs.developers.google.com/codelabs/android-training-create-asynctask/index.html?index=..%2F..%2Fandroid-training#9)
-- [07.2: AsyncTask and AsyncTaskLoader](https://codelabs.developers.google.com/codelabs/android-training-asynctask-asynctaskloader/index.html?index=..%2F..%2Fandroid-training#10)
-- [07.3: Broadcast receivers](https://codelabs.developers.google.com/codelabs/android-training-broadcast-receivers/index.html?index=..%2F..%2Fandroid-training#9)
+- 1. [自動擷取每日卡友照片](https://photos.dcard.tw/memberPhotos/1c06d3b1-2105-4946-9e83-8645c01aabd2)
+- 2. [日誌偵錯] (https://github.com/Leyan529/Project/tree/master/DCARD_DrawOut/DCARD_LOG)
+- 3. [郵件/登入資訊](https://github.com/Leyan529/Project/blob/master/DCARD_DrawOut/DCARD_INFO.7z)
+- 4. [顏值辨識] (https://github.com/Leyan529/Project/tree/master/beauty_detector)
 
-## Part 1. Questions (20 pt)
-Please submit your answer on moodle.
-<https://moodle.ncku.edu.tw/course/view.php?id=104771>
+## DCARD DrawOut
 
-**[Notice]** 
-- You only have **one chance** to submit your answer.
-- Your score on moodle (out of 100) * 20 % = your points in this part. <br>
-For example, you score on moodle is 50, and then you got 50 * 20 % = 10 pt for this homework
+[碩論新聞爬蟲](https://github.com/Leyan529/Project/tree/master/DCARD_DrawOut)
 
-| Codelab | Questions |
-| --- | ----------- |
-| 07.1 | 4 Questions |
-| 07.2 | 7 Questions |
-| 07.3 | 4 Questions |
+- 1. [MongoDB](https://github.com/Leyan529/Project/blob/master/Crawl_News/MongoDB.py)
+- 2. [日誌偵錯] (https://github.com/Leyan529/Project/blob/master/Crawl_News/log.py)
+- 3. [新聞來源](https://www.investing.com/currencies/streaming-forex-rates-majors)
 
+# Mahine Learning
+## Beauty Detector
 
-## Part 2. Android Tests (70 pt)
+[顏值辨識](https://github.com/Leyan529/Project/tree/master/beauty_detector)
 
-Please submit your code to the **master** branch in this repository for grading.
-
-**[Notice]** 
-- Please do not modify the following files:
-    - .travis.yml
-    - <Project>/app/src/androidTest/*
-    - gradle files
-- Once any modifications or any cheating behavior are detected, you will got 0 pt for this homework.
-- Creating a new branch to develop and testing locally are highly recommended.
-    
-<table>
-    <thead>
-        <tr>
-            <th>Codelab</th>
-            <th>Starter Project</th>
-            <th>Test File</th>
-            <th>Questions</th>
-            <th>Points</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>07.1</td>
-            <td>SimpleAsyncTask</td>
-            <td>ProgressBarTest</td>
-            <td>testProgressBarLayout</td>
-            <td>10 pt</td>
-        </tr>
-        <tr>
-            <td rowspan=3>07.2</td>
-            <td rowspan=3>GetWebSourceCode</td>
-            <td rowspan=2>GetWebSourceCodeTest</td>
-            <td>testWebSourceCodeLayout</td>
-            <td>10 pt</td>
-        </tr>
-        <tr>
-            <td>testWebSourceCodeFunction</td>
-            <td>20 pt</td>
-        </tr>
-        <tr>
-            <td>NoInternetTest</td>
-            <td>testNoInternetResponse</td>
-            <td>10 pt</td>
-        </tr>
-        <tr>
-            <td rowspan=2>07.3</td>
-            <td rowspan=2>PowerReceiver</td>
-            <td rowspan=2>CustomBroadcastTest</td>
-            <td>testRangeOfRandomNumber</td>
-            <td>10 pt</td>
-        </tr>
-        <tr>
-            <td>testToastMessage</td>
-            <td>10 pt</td>
-        </tr>
-    </tbody>
-</table>
-
-----
-## Part 3. ScreenShots and descriptions (10 pt)
-
-Please upload your screenshots in this repo **with specific file name in "screenshots" folder**.
-Make sure your screenshots including the following components.
-
-- [免費線上影片轉 GIF 動圖教學](https://www.kocpc.com.tw/archives/225214)
-- [EZGIF - online GIF maker and image editor](https://ezgif.com/)
-
-| Codelab | Questions | Points |
-| --- | ----------- | ---|
-| 07.1 |  A ProgressBar that displays the percentage of sleep time complete <br> ![screenshots/07_1-ProgressBar.gif](screenshots/07_1-ProgressBar.gif) | 10 pt |
+- 1. [臉部偵測器](https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat)
+- 2. [FaceRating DataSet] (https://github.com/HCIILAB/SCUT-FBP5500-Database-Release)
+- 3. [Keras - ResNet](https://arxiv.org/pdf/1512.03385.pdf)
+- 4. [Matplotlib-顏值分布] (![SCUT-FBP5500_v2/SCUT-FBP5500.jpg])
 
 
-### Question 1.1 - How do you determine the range of values that a ProgressBar can show?
+# Forex Predict
 
-*Please answer here.*
+[外匯預測](https://github.com/Leyan529/Project/tree/master/ForexPredict)
 
-### Question 1.2 - How do you change how much of the progress bar is filled in?
+- 1. [DataSet - USD/JPY](https://github.com/Leyan529/Project/tree/master/ForexPredict/DataSet)
+- 2. [LSTM] (https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7508408)
+- 3. [Seq2Seq](https://arxiv.org/abs/1409.3215)
 
-*Please answer here.*
+
+# Android
+## EHat
+
+[2015大學Android專題](https://github.com/Leyan529/Project/tree/master/ForexPredict)
+
+- 1. [藍芽連線](https://github.com/Leyan529/Project/blob/master/eHat/Source%20Code/app/src/main/java/tw/edu/nkfust/eHat/RFduinoManager.java)
+   * [Use RFDuino](https://github.com/Leyan529/Project/blob/master/eHat/Source%20Code/app/src/main/java/tw/edu/nkfust/eHat/RFduinoManager.java)
+
+- 2. [鬧鈴提醒] (https://github.com/Leyan529/Project/blob/master/eHat/Source%20Code/app/src/main/java/tw/edu/nkfust/eHat/AlarmHelper.java)
+- 3. [Google Map](https://github.com/Leyan529/Project/blob/master/eHat/Source%20Code/app/src/main/java/tw/edu/nkfust/eHat/MapHelper.java)
+- 4. [bytesToHex](https://github.com/Leyan529/Project/blob/master/eHat/Source%20Code/app/src/main/java/tw/edu/nkfust/eHat/HexAsciiHelper.java)
+- 5. [JSON](https://github.com/Leyan529/Project/blob/master/eHat/Source%20Code/app/src/main/java/tw/edu/nkfust/eHat/JSONParser.java)
+- 6. [資料庫](https://github.com/Leyan529/Project/blob/master/eHat/Source%20Code/app/src/main/java/tw/edu/nkfust/eHat/CallDatabaseHelper.java)
+- 7. [推播通知](https://github.com/Leyan529/Project/blob/master/eHat/Source%20Code/app/src/main/java/tw/edu/nkfust/eHat/NotificationHelper.java)
+
