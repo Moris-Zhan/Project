@@ -10,6 +10,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+
+from selenium.webdriver.chrome.options import Options
+WINDOW_SIZE = "1920,1080"
+CHROMEDRIVER_PATH = ".\chromedriver.exe"
+chrome_options = Options()  
+chrome_options.add_argument("--headless")  
+chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
 # ------------------------------------------------------------------------------------------
 import logging
 import os
@@ -44,7 +51,7 @@ def get_face(img):
 	global detector, landmark_predictor
 	# 宣告臉部偵測器，以及載入預訓練的臉部特徵點模型
 	detector = dlib.get_frontal_face_detector()
-	landmark_predictor = dlib.shape_predictor('DCARD/shape_predictor_68_face_landmarks.dat')
+	landmark_predictor = dlib.shape_predictor('DCARD/model/shape_predictor_68_face_landmarks.dat')
 
 	# 產生臉部識別
 	face_rects = detector(img, 1)
@@ -70,8 +77,8 @@ def get_face(img):
 
 
 def predict_image(image):
-	model = load_model('DCARD/faceRank.h5')
-	model.load_weights('DCARD/faceRank_weights.h5')
+	model = load_model('DCARD/model/faceRank.h5')
+	model.load_weights('DCARD/model/faceRank_weights.h5')
 	opencvImage = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)  # predict target
 	face = get_face(opencvImage)
 	face = face.astype('float32')
@@ -89,10 +96,10 @@ def download_image(url, name, p=True):
 			'user-agent': 'Mozilla/5.0 (Macintosh Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'}
 		response = req.get(url, headers=headers)
 		image = Image.open(BytesIO(response.content))
-		image.show()
+		# image.show() # 開啟圖片
 
 		date = datetime.now().strftime("%Y-%m-%d")
-		img_dir = 'DCARD Image/' + date + '/'
+		img_dir = 'DCARD/Image/' + date + '/'
 		logger.info(img_dir)
 
 		if not os.path.exists(img_dir):
@@ -161,24 +168,27 @@ def getLogger(loggerName, loggerPath):
 def open_web(account, pwd, alis):
 	try:
 		url = "https://www.dcard.tw/login"
-		try:
-			driver = webdriver.Chrome("D:\\Program\\Anaconda3\\chromedriver.exe")
-			driver.get(url)
-		except:
-			driver = webdriver.Chrome("E:\\Program\\Anaconda3\\chromedriver.exe")
-			driver.get(url)
+		# try:
+		# 	driver = webdriver.Chrome("D:\\Program\\Anaconda3\\chromedriver.exe")
+		# 	driver.get(url)
+		# except:
+		# 	driver = webdriver.Chrome("E:\\Program\\Anaconda3\\chromedriver.exe")
+		# 	driver.get(url)
+
+		driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
+                          chrome_options=chrome_options) 
+		driver.get(url)
+
 
 		# 輸入帳號
-		accountBox = driver.find_element_by_xpath(
-			'//*[@id="root"]/div/div[1]/div/div/div/div[1]/form/label[1]/input')
+		accountBox = driver.find_element_by_xpath('//*[@id="root"]/div/div[1]/div/div/div[4]/div/div[1]/div/form/label[1]/input')		
 		accountBox.send_keys(account)  # 清空內容
 
 		# 輸入密碼
-		pwdBox = driver.find_element_by_xpath(
-			'//*[@id="root"]/div/div[1]/div/div/div/div[1]/form/label[2]/input')
+		pwdBox = driver.find_element_by_xpath('//*[@id="root"]/div/div[1]/div/div/div[4]/div/div[1]/div/form/label[2]/input')
 		pwdBox.send_keys(pwd)  # 清空內容
 
-		driver.find_element_by_xpath('//*[@id="root"]/div/div[1]/div/div/div/div[1]/form/button').click()  # 送出
+		driver.find_element_by_xpath('//*[@id="root"]/div/div[1]/div/div/div[4]/div/div[1]/div/form/button').click()  # 送出
 		time.sleep(5)
 
 		# 前往抽卡頁面
@@ -380,8 +390,7 @@ def senfMail(alis, text):
 try:
 	today, yesterday = getDay()
 	loggerName = "DCARD"
-	path = str(os.path.abspath('.'))
-	loggerPath = path + '/DCARD_LOG/DCARD - log - ' + str(today) + '.txt'
+	loggerPath = 'DCARD/LOG/log - ' + str(today) + '.txt'
 	logger = getLogger(loggerName, loggerPath)
 
 	DCARD_INFO = {}

@@ -129,3 +129,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 DCARD_DrawOut/DCARD_INFO.txt
+DCARD_DrawOut/DCARD/model/old/faceRank.h5
+DCARD_DrawOut/DCARD/model/old/faceRank_weights.h5
+DCARD_DrawOut/DCARD/model/faceRank.h5
+DCARD_DrawOut/DCARD/model/faceRank_weights.h5
+DCARD_DrawOut/DCARD/model/shape_predictor_68_face_landmarks.dat

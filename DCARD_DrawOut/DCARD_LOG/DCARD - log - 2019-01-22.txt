@@ -1,8 +1,0 @@
-2019-01-22 21:16:00 - DCARD - INFO: - logger已啟動
-2019-01-22 21:16:00 - DCARD - INFO: - 檢查登入文件:True
-2019-01-22 21:16:00 - DCARD - INFO: - E:\WorkSpace\PythonWorkSpace\DCARD_DrawOut\DCARD_INFO.txt
-2019-01-22 21:16:00 - DCARD - INFO: - logger已關閉
-2019-01-22 21:16:27 - DCARD - INFO: - logger已啟動
-2019-01-22 21:16:27 - DCARD - INFO: - 檢查登入文件:True
-2019-01-22 21:16:27 - DCARD - INFO: - E:\WorkSpace\PythonWorkSpace\DCARD_DrawOut\DCARD_INFO.txt
-2019-01-22 21:16:27 - DCARD - INFO: - logger已關閉
