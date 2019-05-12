@@ -1,9 +1,5 @@
 # Package
-beauty_detector/SCUT-FBP5500_v2/
-beauty_detector/dlib/
-beauty_detector/face_model/
-beauty_detector/Images/
-beauty_detector/SCUT-FBP5500_v2/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
