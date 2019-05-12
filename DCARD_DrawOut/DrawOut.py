@@ -374,8 +374,12 @@ def senfMail(alis, text):
 		smtp.sendmail(msg['From'], emails, msg.as_string())
 		logger.info('Send mails to ' + msg['To'])
 		logger.info(u'寄信成功')
-	except smtplib.SMTPException:
+	except smtplib.SMTPException as e :
 		logger.error(u'寄信失敗')
+		traceback = sys.exc_info()[2]
+		logger.error(sys.exc_info())
+		logger.error(traceback.tb_lineno)
+		logger.error(e)
 
 	except Exception as e:
 		traceback = sys.exc_info()[2]
