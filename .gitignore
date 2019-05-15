@@ -129,3 +129,5 @@ DCARD_DrawOut/DCARD_INFO.txt
 DCARD_DrawOut/DCARD/Image/
 DCARD_DrawOut/DCARD/LOG/
 keras-yolo3/Container/train_cdc/
+beauty_detector/.vscode/settings.json
+beauty_detector/*.h5

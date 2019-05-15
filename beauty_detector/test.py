@@ -10,6 +10,7 @@ from keras.callbacks import *
 from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 from sklearn.model_selection import train_test_split
 from keras.preprocessing.image import load_img
+from keras import backend as K
 
 
 #%%
@@ -29,9 +30,14 @@ import pandas as pd
 import sys
 import time
 
+import face_recognition
+
 from imutils.face_utils import FaceAligner
 from imutils.face_utils import rect_to_bb
 # % matplotlib inline
+import os
+from os import listdir,getcwd
+import shutil
 
 #%%
 global detector ,landmark_predictor
@@ -45,31 +51,43 @@ rating_dict={}
 with open('./All_labels.txt','rb') as label:
     datalines = label.readlines()
     for d in datalines:
-        d = str(d).replace('b','').replace('\\n','').replace("'","").split(' ')
+        d = str(d).replace('b','').replace('\\n','').replace('\\r','').replace("'","").split(' ')
         rating_dict[d[0]] = float(d[1])        
 
-def get_face(img):
+def get_face(fullpath):
     #產生臉部識別
-    face_rects = detector(img, 1)
-    for i, d in enumerate(face_rects):
-        #讀取框左上右下座標
-        x1 = d.left()
-        y1 = d.top()
-        x2 = d.right()
-        y2 = d.bottom()
-        #根據此座標範圍讀取臉部特徵點
-        shape = landmark_predictor(img, d)
-        #將特徵點轉為numpy
-        shape = shape_to_np(shape)# (68,2)    
-        # 透過dlib挖取臉孔部分，將臉孔圖片縮放至256*256的大小，並存放於pickle檔中
-        # 人臉圖像部分呢。很簡單，只要根據畫框的位置切取即可crop_img = img[y1:y2, x1:x2, :]
-        crop_img = img[y1:y2, x1:x2, :]   
-        try:
-            crop_img = cv2.resize(crop_img, (128, 128))         
-            return crop_img   
-        except:
-            return np.array([0])  
-    return np.array([0]) 
+    # face_rects = detector(img, 1)
+    # for i, d in enumerate(face_rects):
+    #     #讀取框左上右下座標
+    #     x1 = d.left()
+    #     y1 = d.top()
+    #     x2 = d.right()
+    #     y2 = d.bottom()
+    #     #根據此座標範圍讀取臉部特徵點
+    #     shape = landmark_predictor(img, d)
+    #     #將特徵點轉為numpy
+    #     shape = shape_to_np(shape)# (68,2)    
+    #     # 透過dlib挖取臉孔部分，將臉孔圖片縮放至256*256的大小，並存放於pickle檔中
+    #     # 人臉圖像部分呢。很簡單，只要根據畫框的位置切取即可crop_img = img[y1:y2, x1:x2, :]
+    #     crop_img = img[y1:y2, x1:x2, :]   
+    #     try:
+    #         crop_img = cv2.resize(crop_img, (128, 128))         
+    #         return crop_img   
+    #     except:
+    #         return np.array([0])  
+
+
+    img = face_recognition.load_image_file(fullpath)
+    # (Top,Left,Buttom,right)
+    locat = face_recognition.face_locations(img,model="cnn")
+    if len(locat)>0:
+        Top,right,Buttom,Left = locat[0]    
+        img = img[Top:Buttom, Left:right] 
+        img = cv2.resize(img, (128, 128))         
+        return img 
+    else:
+        return np.array([0]) 
+    
 
 #%% 顏值特徵擷取
 def load_dataset():  
@@ -82,8 +100,8 @@ def load_dataset():
     for idx,f in enumerate(os.listdir(files)):
         # 產生檔案的絕對路徑
         fullpath = os.path.join(files, f)
-        img = cv2.imread(fullpath)
-        face = get_face(img)
+        # img = cv2.imread(fullpath)
+        face = get_face(fullpath)
         if (face.shape != (1,)) :
             image_data_list.append(img_to_array(face))
             label.append(rating_dict[f]) 
@@ -92,7 +110,7 @@ def load_dataset():
             print(fullpath)
         if (idx%100==0)and (idx>0):        
             print("{} detect success , use time:{:2f}s".format(idx - len(error),time.time() - start))
-        del fullpath,img,face
+        del fullpath,face
         
     img_data = np.array(image_data_list)
     img_data = img_data.astype('float32')
@@ -152,10 +170,14 @@ plt.bar(['lv1','lv2','lv3','lv4','lv5','lv6','lv7','lv8','lv9'],
 #     model.summary()
 #     return model
 #%%
-seed = 42
+seed = 1
 x_train_all, x_test, y_train_all, y_test = train_test_split(train_x, np.array(train_y), test_size=0.2, random_state=seed)
 x_train, x_val, y_train, y_val = train_test_split(x_train_all, y_train_all, test_size=0.2, random_state=seed)
 #%%
+
+def root_mean_squared_error(y_true, y_pred):
+        return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1)) 
+
 def make_network():
     resnet = ResNet50(include_top=False, pooling='avg', input_shape=(128, 128, 3))
     model = Sequential()
@@ -163,7 +185,9 @@ def make_network():
     model.add(Dense(1))
     model.layers[0].trainable = True
 #     model.compile(loss='mse', optimizer='adam')    
-    model.compile(loss='mse', optimizer='Adam',metrics=['accuracy'])
+    # model.compile(loss='mse', optimizer='Adam',metrics=['accuracy'])
+    model.compile(loss = root_mean_squared_error, optimizer='rmsprop',metrics=['accuracy'])
+    model.summary()
     model.summary()
     return model
 
@@ -172,7 +196,7 @@ model = make_network()
 #%% 模型訓練
 early_stopping = EarlyStopping(
     monitor='val_loss', 
-    patience = 2, 
+    patience = 5, 
     verbose = 0, 
     mode='auto'
 )
@@ -186,46 +210,51 @@ reduce_learning_rate = ReduceLROnPlateau(monitor='loss',
                                          min_lr=0.00001,
                                          verbose=1)
 
-callback_list = [checkpoint, reduce_learning_rate,early_stopping]
+# callback_list = [checkpoint, reduce_learning_rate,early_stopping]
+
+callback_list = [checkpoint,early_stopping]
 
 train_history = model.fit(x_train, y_train, 
-                          batch_size=8, epochs=30, verbose=1, 
+                          batch_size=16, epochs=30, verbose=1, 
                           validation_split=0.2,
                           validation_data=(x_val, y_val),
                           callbacks = callback_list)
 
 
 #%% 模型評估
-def show_train_history(train_history, train, validation):
+def show_train_history(train_history, train, validation,title):
     plt.plot(train_history.history[train])
     plt.plot(train_history.history[validation])
     plt.title('Train History')
     plt.ylabel('train')
     plt.xlabel('Epoch')
     plt.legend(['train', 'validation'], loc='center right')
+    plt.title(title)
     plt.show()
     
-show_train_history(train_history, 'acc','val_acc')
-show_train_history(train_history, 'loss','val_loss')
-model.evaluate(x_test,y_test)
+show_train_history(train_history, 'acc','val_acc','Accuracy')
+show_train_history(train_history, 'loss','val_loss','Loss')
+loss,acc = model.evaluate(x_test,y_test)
+print("Loss:{} , Accuracy:{}".format(loss,acc))
 #%%
 plt.scatter(y_test,model.predict(x_test))
 plt.plot(y_test,y_test,'ro')
 #%% 儲存模型%權重
 # Save model
-model.save('./faceRank.h5')
-model.save_weights('./faceRank_weights.h5')
+model.save('face_model/faceRank.h5')
+model.save_weights('face_model/faceRank_weights.h5')
 del model
 from keras.models import load_model
 global model
-model = load_model('./faceRank.h5')
-model.load_weights('./faceRank_weights.h5')
+model = load_model('face_model/faceRank.h5')
+model.load_weights('face_model/faceRank_weights.h5')
 
 #%% 目標顏值預測
 def predict_image(img_url):
     try:
         image = cv2.imread(img_url)
         face = get_face(image)
+        # face = face_recognition.face_locations(img_url)
         face = face.astype('float32')
         face /= 255  
         print(face.shape)
@@ -233,6 +262,10 @@ def predict_image(img_url):
         img = image[np.newaxis,:,:]
         plt.axis('off')
         plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+        plt.figure()
+        plt.imshow(img)
+        plt.axis('off')
+        
 
         print("Predict Score : {}".format(model.predict(img)[0][0] * 20))  
     except Exception as e :
@@ -247,12 +280,34 @@ for idx,f in enumerate(os.listdir(files)[-5:-1]):
     predict_image(fullpath)
 
 #%%
-files = './TestImages'
-for idx,f in enumerate(os.listdir(files)):
+files = "./Test/"
+for idx,f in enumerate(listdir(files)):
     # 產生檔案的絕對路徑
     fullpath = os.path.join(files, f)
-    img = load_img(fullpath)
-    plt.imshow(img)
-    predict_image(fullpath)
+    img = face_recognition.load_image_file(fullpath)
+    # (Top,Left,Buttom,right)
+    locat = face_recognition.face_locations(img)
+    if len(locat)>0:
+        Top,right,Buttom,Left = locat[0]    
+        img = img[Top:Buttom, Left:right] 
+        # plt.figure()
+        # plt.axis('off')
+        # plt.imshow(crop_img)
+        # plt.show()
+        face = img.astype('float32')
+        face /= 255  
+        print(face.shape)
+        image = img_to_array(face)
+        img = image[np.newaxis,:,:]
+        plt.axis('off')
+        plt.figure()
+        # plt.imshow(img)
+        plt.show()
+        
+
+        print("Predict Score : {}".format(model.predict(img)[0][0] * 20))   
+
+    # img = load_img(fullpath)
+    # predict_image(fullpath)
 
 #%%
