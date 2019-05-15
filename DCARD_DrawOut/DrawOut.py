@@ -353,8 +353,8 @@ def open_web(account, pwd, alis):
 def senfMail(alis, text):
 	try:
 		logger.info(u'發送email')  # 建立mail (發送圖片)
-		sender = DCARD_INFO['SMTP_ACCOUNT']  # 'afly.bsky@gmail.com'
-		passwd = DCARD_INFO['SMPT_PASSWORD']  # 'hwmaianxun'
+		sender = DCARD_INFO['SMTP_ACCOUNT']  # 
+		passwd = DCARD_INFO['SMPT_PASSWORD']  # 
 		receivers = ['afly.bsky@yahoo.com.tw']
 		emails = [elem.strip().split(',') for elem in receivers]
 		msg = MIMEMultipart()
