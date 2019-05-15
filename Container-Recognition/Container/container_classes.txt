@@ -1,0 +1,13 @@
+water_tower
+bowl
+plate
+bottle
+bucket
+washing_machine
+plastic_bag
+box
+toilet
+aquarium
+tire
+tub
+styrofoam
