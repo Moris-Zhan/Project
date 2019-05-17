@@ -131,3 +131,4 @@ DCARD_DrawOut/DCARD/LOG/
 keras-yolo3/Container/train_cdc/
 beauty_detector/.vscode/settings.json
 beauty_detector/*.h5
+Container-Recognition/Container/train_cdc/*
